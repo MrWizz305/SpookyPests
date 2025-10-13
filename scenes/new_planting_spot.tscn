@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce7hcr7fmem2r"]
+
+[ext_resource type="Script" uid="uid://bsgfq1u6fqlej" path="res://scripts/planting_spot.gd" id="1_odwfy"]
+[ext_resource type="PackedScene" uid="uid://dvrioy4yalbnv" path="res://scenes/Newcrop.tscn" id="2_lwyub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odwfy"]
+size = Vector2(95, 95)
+
+[node name="NewPlantingSpot" type="Area2D"]
+script = ExtResource("1_odwfy")
+crop_scene = ExtResource("2_lwyub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_odwfy")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
