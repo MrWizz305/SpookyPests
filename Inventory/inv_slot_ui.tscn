@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqt514o6stura"]
+
+[ext_resource type="Texture2D" uid="uid://clea7ncvublj3" path="res://assets/cozySingh(inventory slot).png" id="1_j3wrx"]
+[ext_resource type="Script" uid="uid://boe2gm67ylgtd" path="res://Inventory/inv_slot_ui.gd" id="1_mwfa6"]
+
+[node name="Inv_Slot_UI" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(9, 9)
+offset_right = 11.0
+offset_bottom = 11.0
+script = ExtResource("1_mwfa6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_j3wrx")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 0
+offset_right = 11.0
+offset_bottom = 11.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+position = Vector2(0.7, 0)
+scale = Vector2(0.6, 0.6)

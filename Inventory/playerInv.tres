@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://bfbfsfqknpmfa"]
+
+[ext_resource type="Script" uid="uid://suro61rpv3tt" path="res://Inventory/inventory_item.gd" id="1_ksk25"]
+[ext_resource type="Resource" uid="uid://c7qver5v0dus5" path="res://Inventory/Item/AdultWheat.tres" id="2_8j7sk"]
+[ext_resource type="Script" uid="uid://bgsb1tj2pw7uv" path="res://Inventory/inventory.gd" id="3_ksk25"]
+
+[resource]
+script = ExtResource("3_ksk25")
+items = Array[ExtResource("1_ksk25")]([ExtResource("2_8j7sk"), null, null, null, ExtResource("2_8j7sk"), null, null, null, ExtResource("2_8j7sk")])
+metadata/_custom_type_script = "uid://bgsb1tj2pw7uv"

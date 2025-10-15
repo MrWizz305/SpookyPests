@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8lfc37iudsee"]
+[gd_scene load_steps=11 format=3 uid="uid://c8lfc37iudsee"]
 
+[ext_resource type="Script" path="res://scripts/DayNNight.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://cbnnx36ojf3u2" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://knht4rihlj1m" path="res://assets/cozySingh(world).png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ce7hcr7fmem2r" path="res://scenes/new_planting_spot.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bm7i8ndijjxsk" path="res://scenes/ghost.tscn" id="5_p57ef"]
+[ext_resource type="Script" path="res://scripts/ghost_spawner.gd" id="6_p57ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -70,7 +73,9 @@ texture = ExtResource("2_yqjtg")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_iywne")
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" node_paths=PackedStringArray("overlay")]
+script = ExtResource("1_iywne")
+overlay = NodePath("ColorRect")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 5
@@ -93,3 +98,64 @@ layer_0/tile_data = PackedInt32Array(-65530, 786433, 0, 9, 851969, 6, -262143, 8
 [node name="NewPlantingSpot" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(247.00002, 8)
 scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot2" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(247.00002, -7.999998)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot3" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(231.00002, -8)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot4" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(215.00002, -8)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot5" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(199, -8)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot6" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(199.00002, 7.999998)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot7" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(215.00002, 8)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot8" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(231, 8)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot9" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(200, 23.999998)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot10" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(216.00002, 24.000002)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot11" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(231, 23.999998)
+scale = Vector2(0.17, 0.17)
+
+[node name="NewPlantingSpot12" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(247, 23.999998)
+scale = Vector2(0.17, 0.17)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visibility_layer = 512
+offset_left = -280.0
+offset_top = -186.0
+offset_right = 499.0
+offset_bottom = 294.0
+mouse_filter = 2
+color = Color(0, 0.06666667, 0.2, 0.6666667)
+
+[node name="GhostSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_p57ef")
+ghost_scene = ExtResource("5_p57ef")
+player = NodePath("../Player")
+
+[connection signal="day_started" from="." to="GhostSpawner" method="_on_game_day_started"]
+[connection signal="night_started" from="." to="GhostSpawner" method="_on_game_night_started"]

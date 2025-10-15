@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbnnx36ojf3u2"]
+[gd_scene load_steps=16 format=3 uid="uid://cbnnx36ojf3u2"]
 
 [ext_resource type="Texture2D" uid="uid://ddgp11tjhj25p" path="res://assets/cozySingh(idle).png" id="1_g2els"]
 [ext_resource type="Script" uid="uid://bp4ob5aje5fus" path="res://scenes/character_body_2d.gd" id="1_qhqgy"]
+[ext_resource type="Resource" uid="uid://bfbfsfqknpmfa" path="res://Inventory/playerInv.tres" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://carvx086thk1s" path="res://assets/cozySingh(walk).png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://tjbougvcni48" path="res://Inventory/inv_ui.tscn" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_g2els")
@@ -80,6 +82,7 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(24, -1)
 script = ExtResource("1_qhqgy")
+inv = ExtResource("2_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
@@ -87,7 +90,7 @@ position = Vector2(-24, 1)
 sprite_frames = SubResource("SpriteFrames_3v2ag")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.746109
+frame_progress = 0.31586552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-24.000004, 3.999998)
@@ -97,3 +100,9 @@ shape = SubResource("CircleShape2D_g2els")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-24, 4)
 zoom = Vector2(4, 4)
+
+[node name="Inv_UI" parent="CharacterBody2D" instance=ExtResource("5_qlg0r")]
+offset_left = -7.0
+offset_top = -20.0
+offset_right = 33.0
+offset_bottom = 18.0

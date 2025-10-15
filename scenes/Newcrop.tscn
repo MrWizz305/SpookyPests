@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dfgckh8pmmwxv" path="res://scripts/new_crop.gd" id="1_b0iku"]
 [ext_resource type="Texture2D" uid="uid://knht4rihlj1m" path="res://assets/cozySingh(world).png" id="2_rnwwq"]
 
-[node name="Crop" type="Node2D"]
+[node name="Crop" type="Node2D" groups=["Crops"]]
 script = ExtResource("1_b0iku")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
