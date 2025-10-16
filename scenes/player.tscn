@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cbnnx36ojf3u2"]
+[gd_scene load_steps=21 format=3 uid="uid://cbnnx36ojf3u2"]
 
 [ext_resource type="Texture2D" uid="uid://ddgp11tjhj25p" path="res://assets/cozySingh(idle).png" id="1_g2els"]
 [ext_resource type="Script" uid="uid://bp4ob5aje5fus" path="res://scenes/character_body_2d.gd" id="1_qhqgy"]
 [ext_resource type="Resource" uid="uid://bfbfsfqknpmfa" path="res://Inventory/playerInv.tres" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://carvx086thk1s" path="res://assets/cozySingh(walk).png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://my53ejv5jn7s" path="res://assets/Sprite-0019.png" id="3_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://tjbougvcni48" path="res://Inventory/inv_ui.tscn" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
@@ -17,6 +18,22 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_g2els")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("3_tuyoq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("3_tuyoq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("3_tuyoq")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("3_tuyoq")
+region = Rect2(48, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
 atlas = ExtResource("2_qhqgy")
@@ -56,6 +73,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}],
+"loop": true,
+"name": &"scythe",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fjrip")
 }, {
 "duration": 1.0,
@@ -88,9 +122,8 @@ inv = ExtResource("2_dqkch")
 texture_filter = 1
 position = Vector2(-24, 1)
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"idle"
+animation = &"scythe"
 autoplay = "idle"
-frame_progress = 0.31586552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-24.000004, 3.999998)
@@ -106,3 +139,9 @@ offset_left = -7.0
 offset_top = -20.0
 offset_right = 33.0
 offset_bottom = 18.0
+
+[node name="AttackTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="CharacterBody2D/AttackTimer" to="CharacterBody2D" method="_on_attack_timer_timeout"]

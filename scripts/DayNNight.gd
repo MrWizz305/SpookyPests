@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var day_length: float = 20
+@export var day_length: float = 40
 @export var night_start: float = 1.0 / 3.0
 @export var night_end: float = 2.0 / 3.0
 @export var darkness: int = 170

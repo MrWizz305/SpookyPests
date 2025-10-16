@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bm7i8ndijjxsk"]
 
-[ext_resource type="Script" path="res://scripts/ghost.gd" id="1_l5lq6"]
+[ext_resource type="Script" uid="uid://bl5r5mcnhego1" path="res://scripts/ghost.gd" id="1_l5lq6"]
 [ext_resource type="Texture2D" uid="uid://ht8wt78axxre" path="res://assets/cozySingh(ghost).png" id="2_l5lq6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbnym"]

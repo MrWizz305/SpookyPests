@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @export var speed := 50.0
 var target_crop: Node2D = null
+@export var max_health: int = 40
+var current_health: int
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -19,6 +21,7 @@ func _on_body_exited(body):
 func _ready():
 	add_to_group("Ghosts")
 	find_nearest_crop()
+	current_health=max_health
 	
 
 func _physics_process(_delta: float) -> void:
@@ -71,3 +74,17 @@ func find_nearest_crop():
 			closest = c
 
 	target_crop = closest
+
+func take_damage(amount):
+	current_health-=amount
+	print("Ghost hit")
+	if current_health<=0:
+		die()
+		
+func die():
+	velocity= Vector2.ZERO
+	set_physics_process(false)
+	set_process(false)
+	if target_crop and is_instance_valid(target_crop):
+		target_crop.being_attacked=false
+	queue_free()
